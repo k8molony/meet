@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 class CitySearch extends Component {
   state = {
     query: '',
     suggestions: []
   }
-  
+
   handleInputChanged = (event) => {
     const value = event.target.value;
     const suggestions = this.props.locations.filter((location) => {
@@ -17,27 +17,18 @@ class CitySearch extends Component {
     });
   };
 
-  handleItemClicked = (suggestion) => {
-    this.setState({
-      query: suggestion
-    });
-  }
-
   render() {
     return (
-      <div className="CitySearch">
+      <div className='CitySearch'>
         <input
           type="text"
           className="city"
           value={this.state.query}
           onChange={this.handleInputChanged}
         />
-        <ul className="suggestions">
+        <ul className='suggestions'>
           {this.state.suggestions.map((suggestion) => (
-            <li 
-              key={suggestion}
-              onClick={() => this.handleItemClicked(suggestion)}
-            >{suggestion}</li>
+            <li key={suggestion}>{suggestion}</li>
           ))}
           <li key='all'>
             <b>See all cities</b>

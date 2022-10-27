@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import { shallow } from 'enzyme';
 import App from '../App';
 import EventList from '../EventList';
@@ -17,4 +17,5 @@ describe('<App /> component', () => {
   test('render CitySearch', () => {
     expect(AppWrapper.find(CitySearch)).toHaveLength(1);
   });
+
 });

@@ -5,4 +5,5 @@ class Event extends Component {
     return <div></div>;
   }
 }
+
 export default Event;
