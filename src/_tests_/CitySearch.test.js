@@ -1,3 +1,16 @@
+// FEATURE: It must filter events by city
+
+/* 
+Tests:
+- DONE render text input
+- DONE render a list of suggestions
+- DONE renders text input correctly
+- DONE change state when text input changes
+- DONE render list of suggestions correctly
+- DONE suggestion list match query when changed
+- DONE selecting a suggestion should change the query state
+*/
+
 import React from 'react';
 import { shallow } from 'enzyme';
 import CitySearch from '../CitySearch';

@@ -1,6 +1,5 @@
 // FEATURE: It must be able to hide and show event details
 
-
 /* 
 Tests:
 - DONE render summary of event
