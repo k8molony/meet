@@ -2,10 +2,9 @@
 
 /* 
 Tests:
-- default amount of events should be 32
-- user can change the number of events displayed
-- text box for user input
-- must display the number of events input by the user
+- DONE render number of events element
+- DONE render input box for number
+- DONE default number of events to 32
 */
 
 
@@ -19,7 +18,15 @@ describe('<NumberOfEvents /> component', () => {
     NumberOfEventsWrapper = shallow(<NumberOfEvents />);
   });
 
-  test('render number of events text input', () => {
+  test('render element', () => {
     expect(NumberOfEventsWrapper.find('.number-of-events')).toHaveLength(1);
+  });
+
+  test('render input for number of events', () => {
+    expect(NumberOfEventsWrapper.find('.number-of-events-input')).toHaveLength(1);
+  });
+
+  test('render default input for number of events of 32', () => {
+    expect(NumberOfEventsWrapper.find('.number-of-events-input').prop('value')).toBe(32);
   });
 });
