@@ -5,7 +5,6 @@ Tests:
 - DONE render number of events element
 - DONE render input box for number of events
 - DONE render number of events correctly
-- number of events rendered matches input when changed
 - DONE default number of events to 32
 */
 
