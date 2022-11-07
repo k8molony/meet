@@ -22,26 +22,26 @@ class NumberOfEvents extends Component {
   };
 
   render() {
-    const { event } = this.props;
+    const { numberOfEvents } = this.props;
     return (
       <div>
         <div className="number-of-events">
-          <label>
-            Number of Events:
-            <input
-              type="number"
-              className="number-of-events-input"
-              min="1"
-              value={this.state.numberOfEvents}
-              onChange={this.handleInputChanged}
-            />
-            <button 
-              className='number-of-events-button'
-              onClick={this.handleInputChanged}
-            >
-              show
-            </button>
-          </label>
+            <label>
+              Number of Events:
+              <input
+                type="number"
+                className="number-of-events-input"
+                min="1"
+                value={this.state.numberOfEvents}
+                onChange={this.handleInputChanged}
+              />
+              <button 
+                className='number-of-events-button'
+                onClick={this.handleInputChanged}
+              >
+                show
+              </button>
+            </label>
         </div>
       </div>
     );
