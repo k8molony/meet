@@ -29,7 +29,7 @@ class CitySearch extends Component {
         <input
           type="text"
           className="city"
-          value={this.state.query}
+          defaultValue={this.state.query}
           onChange={this.handleInputChanged}
         />
         <ul className="suggestions">

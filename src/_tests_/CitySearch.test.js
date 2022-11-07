@@ -34,7 +34,7 @@ describe('<CitySearch /> component', () => {
 
   test('renders text input correctly', () => {
     const query = CitySearchWrapper.state('query');
-    expect(CitySearchWrapper.find('.city').prop('value')).toBe(query);
+    expect(CitySearchWrapper.find('.city').prop('defaultValue')).toBe(query);
   });
 
   test('change state when text input changes', () => {

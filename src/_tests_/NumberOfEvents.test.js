@@ -32,6 +32,22 @@ describe('<NumberOfEvents /> component', () => {
     expect(NumberOfEventsWrapper.find('.number-of-events').prop('value')).toBe(numberQuery);
   });
 
+  test('render button to set number of events', () => {
+    expect (NumberOfEventsWrapper.find('.number-of-events-button')).toHaveLength(1);
+  });
+
+  test('render list when button is clicked', () => {
+    NumberOfEventsWrapper.find('.number-of-events-input').at(0).simulate('click');
+    expect(NumberOfEventsWrapper.find('.number-of-events')).toHaveLength(1);
+  })
+
+  test('change state to match number input', () => {
+    NumberOfEventsWrapper.setState({ numberOfEvents: 32 });
+    const eventObject = { target: 10 };
+    NumberOfEventsWrapper.find('.number-of-events-input').simulate('change', eventObject);
+    expect(NumberOfEventsWrapper.state('numberOfEvents')).toBe(10);
+  });
+
   test('render default input for number of events of 32', () => {
     expect(NumberOfEventsWrapper.find('.number-of-events-input').prop('value')).toBe(32);
   });
