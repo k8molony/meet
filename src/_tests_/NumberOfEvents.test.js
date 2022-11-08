@@ -41,14 +41,19 @@ describe('<NumberOfEvents /> component', () => {
     expect(NumberOfEventsWrapper.find('.number-of-events')).toHaveLength(1);
   })
 
+  test('render default input for number of events of 32', () => {
+    expect(NumberOfEventsWrapper.find('.number-of-events-input').prop('value')).toBe(32);
+  });
+
   test('change state to match number input', () => {
     NumberOfEventsWrapper.setState({ numberOfEvents: 32 });
-    const eventObject = { target: 10 };
+    const eventObject = { target: {value: 10} };
     NumberOfEventsWrapper.find('.number-of-events-input').simulate('change', eventObject);
     expect(NumberOfEventsWrapper.state('numberOfEvents')).toBe(10);
   });
 
-  test('render default input for number of events of 32', () => {
-    expect(NumberOfEventsWrapper.find('.number-of-events-input').prop('value')).toBe(32);
+  test('selecting a number outside of range should generate error', () => {
+    NumberOfEventsWrapper.setState({ numberOfEvents: 35 });
+    expect(NumberOfEventsWrapper.find('.errorText')).toHaveLength(1);
   });
 });
