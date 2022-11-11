@@ -2,10 +2,13 @@
 
 /* 
 Tests:
-- DONE render number of events element
-- DONE render input box for number of events
-- DONE render number of events correctly
-- DONE default number of events to 32
+- DONE render number of events element (2 ms)
+- DONE render input box for number of events (1 ms)
+- DONE render number of events correctly (1 ms)
+- DONE render button to set number of events (1 ms)
+- DONE render list when button is clicked (1 ms)
+- DONE render default input for number of events of 32 (1 ms)
+- DONE change state to match number input (2 ms)
 */
 
 
@@ -50,10 +53,5 @@ describe('<NumberOfEvents /> component', () => {
     const eventObject = { target: {value: 10} };
     NumberOfEventsWrapper.find('.number-of-events-input').simulate('change', eventObject);
     expect(NumberOfEventsWrapper.state('numberOfEvents')).toBe(10);
-  });
-
-  test('selecting a number outside of range should generate error', () => {
-    NumberOfEventsWrapper.setState({ numberOfEvents: 35 });
-    expect(NumberOfEventsWrapper.find('.errorText')).toHaveLength(1);
   });
 });
