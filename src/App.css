@@ -86,7 +86,7 @@ input[type="number"] {
   padding: 10px 10px 35px;
   margin-bottom: 10px;
   text-align: left;
-  border: 1px inset #463536;
+  border: 1px groove #463536;
   border-radius: 8px;
   position: relative;
   background-color: #e2dfd9;
