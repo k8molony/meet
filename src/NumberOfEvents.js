@@ -22,7 +22,7 @@ class NumberOfEvents extends Component {
   };
 
   render() {
-    const { numberOfEvents } = this.props;
+    // const { numberOfEvents } = this.props;
     return (
       <div>
         <div className="number-of-events">
@@ -49,53 +49,3 @@ class NumberOfEvents extends Component {
 }
 
 export default NumberOfEvents;
-
-// import React, { Component } from 'react';                                                                                                                                                        1fmrt5iukm
-
-
-// class NumberOfEvents extends Component {
-//   state= {
-//     numberQuery: '',
-//     suggestionsNumber: []
-//   }
-
-//   handleInputChanged = (event) => {
-//     const value = event.target.value;
-//     const suggestionsNumber = this.props.locations.filter((location) => {
-//       return location.toUpperCase().indexOf(value.toUpperCase()) > -1;
-//     });
-//     this.setState({
-//       numberQuery: value,
-//       suggestionsNumber
-//     });
-//   };
-
-//   handleItemClicked = (suggestionNumber) => {
-//     this.setState({
-//       numberQuery: suggestionNumber
-//     });
-//   }
-
-//   render() {
-//     return (
-//       <div className='NumberOfEvents'>
-//         <input
-//           type="text"
-//           className="number-of-events"
-//           value={this.state.numberQuery}
-//           onChange={this.handleInputChanged}
-//         />
-//         <ul className='suggestions-number'>
-//           {this.state.suggestionsNumber.map((suggestionNumber) => (
-//             <li
-//               key={suggestionNumber}
-//               onClick={() => this.handleItemClicked(suggestionNumber)}
-//             >{suggestionNumber}</li>
-//           ))}
-//         </ul>
-//       </div>
-//     );
-//   }
-// }
-  
-  // export default NumberOfEvents;
