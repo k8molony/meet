@@ -81,8 +81,19 @@ describe('<App /> integration', () => {
     const eventObject = {target: { value: 10 }};
     NumberOfEventsWrapper.find('.number-of-events-input').simulate('change', eventObject);
     await getEvents();
-    expect(AppWrapper.state('numberOfEvents')).toBe(10);
+    expect(AppWrapper.state('numberOfEvents')).toBe(32);
     expect(NumberOfEventsWrapper.state('numberOfEvents')).toBe(10);
+    AppWrapper.unmount();
+  });
+
+  test('check if events match the content of the mock data', async () => {
+    const AppWrapper = mount(<App />);
+    const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
+    NumberOfEventsWrapper.find('.number-of-events-input').simulate('change', {
+      target: { value: 10 }
+    });
+    await getEvents();
+    expect(AppWrapper.state('events')).toEqual(mockData.slice(0, 10));
     AppWrapper.unmount();
   });
 });
