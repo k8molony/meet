@@ -35,12 +35,12 @@ class NumberOfEvents extends Component {
                 value={this.state.numberOfEvents}
                 onChange={this.handleInputChanged}
               />
-              {/* <button 
+              <button 
                 className='number-of-events-button'
                 onClick={this.handleInputChanged}
               >
                 show
-              </button> */}
+              </button>
             </label>
         </div>
       </div>
