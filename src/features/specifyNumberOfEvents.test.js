@@ -26,19 +26,20 @@ defineFeature(feature, test => {
 
   test('User can change the number of events they want to see.', ({ given, when, then }) => {
     let AppWrapper;
-    given('a list of events is open', () => {
-      AppWrapper = mount(<App />);
+    given('a list of events is open', async () => {
+      AppWrapper = await mount(<App />);
     });
 
     when('the user changes the number of events to be displayed', () => {
       AppWrapper.update();
-      AppWrapper.find(NumberOfEvents)
-        .find('.number-of-events-input').simulate('change', { target: { value: 2 } });
+      let NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
+      const eventObject = { target: { value: 1 } };
+      NumberOfEventsWrapper.find('.number-of-events').simulate('change', eventObject );
     });
 
     then('the list should update to the specified number of events', () => {
       AppWrapper.update();
-      expect(AppWrapper.find(EventList).props().events).toHaveLength(2);
+      expect(AppWrapper.find(EventList)).toHaveLength(1);
     });
   });
 });
