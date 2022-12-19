@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Meet",
+  "name": "Meet: Find some fun!",
   "icons": [
     {
       "src": "favicon.ico",
@@ -23,6 +23,7 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#3f413a",
+  "background_color": "#e2dfd9",
+  "prefer_related_applications": false
 }
