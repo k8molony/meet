@@ -15,8 +15,10 @@ h1 {
   font-size: 60px;
 }
 
-h2 {
+h2, h4 {
   color: #3f413a;
+  font-family: 'Shadows Into Light', cursive;
+  font-size: 25px;
 }
 
 ul {

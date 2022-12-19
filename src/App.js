@@ -53,6 +53,7 @@ class App extends Component {
         <h1>Meet App</h1>
         <h4>Choose your location:</h4>
         <CitySearch locations={locations} updateEvents={this.updateEvents} />
+        <h4>Choose number of events to display:</h4>
         <NumberOfEvents numberOfEvents={numberOfEvents} updateEvents={this.updateEvents} />
         <EventList  events={events} />
       </div>
