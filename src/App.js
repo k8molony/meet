@@ -6,6 +6,7 @@ import NumberOfEvents from './NumberOfEvents';
 import { extractLocations, getEvents, checkToken, getAccessToken } from './api';
 import './nprogress.css';
 import WelcomeScreen from './WelcomeScreen';
+import { OfflineAlert } from './Alert';
 
 
 class App extends Component {
@@ -39,7 +40,7 @@ class App extends Component {
     const isTokenValid = (await checkToken(accessToken)).error ? false : true;
     const searchParams = new URLSearchParams(window.location.search);
     const code = searchParams.get("code");
-    this.setState({showWelcomeScreen: !(code || isTokenValid) });
+    this.setState({ showWelcomeScreen: !(code || isTokenValid) });
     if ((code || isTokenValid) && this.mounted) {
       getEvents().then((events) => {
         if (this.mounted) {
@@ -59,9 +60,16 @@ class App extends Component {
   render() {
     const { locations, events, numberOfEvents, showWelcomeScreen } = this.state;
 
-    if (this.state.showWelcomeScreen === undefined) return <div className="App" />;
+    if (showWelcomeScreen === undefined) return <div className="App" />;
+    
     return (
       <div className="App">
+          {!navigator.onLine &&
+            <OfflineAlert
+              text='You are currently offline. The list of events may not be up-to-date'
+              className='OfflineAlert'
+            />
+          }
         <h1>Meet App</h1>
         <h4>Choose your location:</h4>
         <CitySearch locations={locations} updateEvents={this.updateEvents} />
