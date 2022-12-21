@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
+import './nprogress.css';
+
 import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
-import { extractLocations, getEvents, checkToken, getAccessToken } from './api';
-import './nprogress.css';
-import WelcomeScreen from './WelcomeScreen';
+
+import { extractLocations, getEvents } from './api';
 import { OfflineAlert } from './Alert';
 
 
@@ -14,9 +15,9 @@ class App extends Component {
     events: [],
     locations: [],
     numberOfEvents: 32,
-    selectedLocation: 'all',
-    showWelcomeScreen: undefined
+    selectedLocation: 'all'
   }
+
 
   updateEvents = (location, eventCount) => {
     const { numberOfEvents } = this.state;
@@ -34,57 +35,44 @@ class App extends Component {
     });
   }
 
+
   async componentDidMount() {
     this.mounted = true;
-    const accessToken = localStorage.getItem('access_token');
-    const isTokenValid = (await checkToken(accessToken)).error ? false : true;
-    const searchParams = new URLSearchParams(window.location.search);
-    const code = searchParams.get("code");
-    this.setState({ showWelcomeScreen: !(code || isTokenValid) });
-    if ((code || isTokenValid) && this.mounted) {
-      getEvents().then((events) => {
-        if (this.mounted) {
-          this.setState({ 
-            events, 
-            locations: extractLocations(events)
-          });
-        }
-      });  
-    }
+    getEvents().then((events) => {
+      if (this.mounted) {
+        this.setState({ 
+          events, 
+          locations: extractLocations(events)
+        });
+      }
+    });
   }
+
 
   componentWillUnmount(){
     this.mounted = false;
   }
 
-  render() {
-    const { locations, events, numberOfEvents, showWelcomeScreen } = this.state;
 
-    if (showWelcomeScreen === undefined) return <div className="App" />;
-    
+  render() {
+    const { locations, events, numberOfEvents } = this.state;
     return (
       <div className="App">
-          {!navigator.onLine &&
-            <OfflineAlert
-              text='You are currently offline. The list of events may not be up-to-date'
-              className='OfflineAlert'
-            />
-          }
+        {!navigator.onLine &&
+        <OfflineAlert
+          text='You are currently offline. The event list may not be up-to-date'
+          className='OfflineAlert'
+        />}
         <h1>Meet App</h1>
         <h4>Choose your location:</h4>
         <CitySearch locations={locations} updateEvents={this.updateEvents} />
         <h4>Choose number of events to display:</h4>
         <NumberOfEvents numberOfEvents={numberOfEvents} updateEvents={this.updateEvents} />
         <EventList  events={events} />
-        <WelcomeScreen 
-          showWelcomeScreen={showWelcomeScreen}
-          getAccessToken={() => {
-            getAccessToken()
-          }}
-        />
       </div>
     );
   }
 }
+
 
 export default App;
