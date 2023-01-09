@@ -22,6 +22,7 @@ class App extends Component {
     showWelcomeScreen: undefined
   }
 
+  TEST_LOCALLY = true;
 
   updateEvents = (location, eventCount) => {
     const { numberOfEvents } = this.state;
@@ -55,7 +56,7 @@ class App extends Component {
     }
 
 
-    if (shouldGetEvents) {
+    if (shouldGetEvents || this.TEST_LOCALLY) {
       getEvents().then((events) => {
         if (this.mounted) {
           events=events.slice(0,this.state.eventCount);
@@ -115,10 +116,10 @@ class App extends Component {
           </ResponsiveContainer>
         </div>
         <EventList  events={events} />
-        <WelcomeScreen 
+        {!this.TEST_LOCALLY && <WelcomeScreen 
           showWelcomeScreen={this.state.showWelcomeScreen} 
           getAccessToken={() => { getAccessToken() }} 
-        />
+        />}
       </div>
     );
   }
