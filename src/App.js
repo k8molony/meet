@@ -22,9 +22,10 @@ class App extends Component {
     showWelcomeScreen: undefined
   }
 
-  TEST_LOCALLY = true;
+  TEST_LOCALLY = false;
 
   updateEvents = (location, eventCount) => {
+    console.log (location);
     const { numberOfEvents } = this.state;
     if (location === undefined) location = this.state.selectedLocation;
     getEvents().then((events) => {
@@ -59,7 +60,7 @@ class App extends Component {
     if (shouldGetEvents || this.TEST_LOCALLY) {
       getEvents().then((events) => {
         if (this.mounted) {
-          events=events.slice(0,this.state.eventCount);
+          events=events.slice(0,this.state.numberOfEvents);
           this.setState({ events, locations: extractLocations(events) });
         }
       });
