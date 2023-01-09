@@ -110,7 +110,7 @@ class App extends Component {
               <XAxis type="category" dataKey="city" name="City" />
               <YAxis allowDecimals={false} type="number" dataKey="number" name="Number of Events" />
               <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-              <Scatter data={this.getData()} fill="#8884d8" />
+              <Scatter data={this.getData()} fill="#3f413a" />
             </ScatterChart>
           </ResponsiveContainer>
         </div>
