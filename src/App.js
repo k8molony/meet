@@ -22,7 +22,7 @@ class App extends Component {
     showWelcomeScreen: undefined
   }
 
-  TEST_LOCALLY = true;
+  TEST_LOCALLY = false;
 
   updateEvents = (location, eventCount) => {
     const { numberOfEvents } = this.state;
