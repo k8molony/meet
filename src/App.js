@@ -22,10 +22,9 @@ class App extends Component {
     showWelcomeScreen: undefined
   }
 
-  TEST_LOCALLY = false;
+  TEST_LOCALLY = true;
 
   updateEvents = (location, eventCount) => {
-    console.log (location);
     const { numberOfEvents } = this.state;
     if (location === undefined) location = this.state.selectedLocation;
     getEvents().then((events) => {
@@ -109,10 +108,10 @@ class App extends Component {
                 top: 20, right: 20, bottom: 20, left: 20,
               }}>
               <CartesianGrid />
-              <XAxis type="category" dataKey="city" name="City" />
+              <XAxis type="category" dataKey="city" name="Location" />
               <YAxis allowDecimals={false} type="number" dataKey="number" name="Number of Events" />
               <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-              <Scatter data={this.getData()} fill="#3f413a" />
+              <Scatter data={this.getData()} fill="#3f413a" name="Number of Events in each city" />
             </ScatterChart>
           </ResponsiveContainer>
         </div>
