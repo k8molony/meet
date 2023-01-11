@@ -7,6 +7,7 @@ import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import WelcomeScreen from './WelcomeScreen';
 import EventGenre from './EventGenre';
+import logo from './img/logo.png';
 
 import { extractLocations, getEvents, checkToken, getAccessToken } from './api';
 import { OfflineAlert } from './Alert';
@@ -91,6 +92,7 @@ class App extends Component {
           text='You are currently offline. The event list may not be up-to-date'
           className='OfflineAlert'
         />}
+        <img src={logo} alt="Meet app logo" className='logo' />
         <h1>Meet App</h1>
         <h4>Choose your location:</h4>
         <CitySearch locations={locations} updateEvents={this.updateEvents} />
